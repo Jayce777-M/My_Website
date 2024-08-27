@@ -1,0 +1,45 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:black;
+    background-color:antiquewhite;
+}
+.planet-container{
+    display: inline-block;
+    text-align: left;
+    width: 100px;
+    height: 400px;
+    margin:5px;
+    margin-top: 120px;
+    border-style: solid double;
+    border-radius: 10px;
+    border-color:aqua;
+    padding: 10px;
+    width: 300px;
+text-align:center;
+font-family: 'Times New Roman', Times, serif;
+
+}
+header{
+    text-align: center;
+    background-color: #1d0d2e;
+    color: white;
+}
+.featured-img{
+    width: 125px;
+}
+#profile-container{
+    background-color: white;
+    width: 400px;
+
+}
+#main-title{
+    font-size: 36px;
+}
+header span{
+    font-size: 18px;
+}

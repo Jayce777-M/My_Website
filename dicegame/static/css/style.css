@@ -1,0 +1,29 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.body{
+background-color: darkgrey;
+font-family:'Courier New', Courier, monospace ;
+}
+
+.navibar{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#concontainer{
+    border-radius: 100px;
+    position: fixed;
+    outline: 1px solid black;
+    background-color: darkgray;
+}
+#selectdice{
+    margin-top: 100px;
+    position: relative;
+    width: 80vw;
+
+}
+
+.container{
+    margin-top: 80px;
+}

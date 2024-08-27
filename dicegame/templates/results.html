@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/stylez.css' %}">
+    <title>Index Page</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container-fluid" id="navibar">
+          <a class="navbar-brand" href="#">Jayce's Website</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'results' %}">Results</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Dicegame</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Random generator</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+  <center>
+  <div class="container">
+
+   <h1 class="text-center">The Results</h1>
+
+   {% for i in items %}
+      {% if i == choice %}
+        <center><p class="bg-success-subtle text-center" id="wintab">Yay!! You win. You selected {{ choice }} and the roll was {{ i }}</p></center> <br>
+      {% else %}
+      <center><p class="bg-danger-subtle text-center" id="losetab">You really got to be unlucky, huh! You selected {{ choice }} and the roll was {{ i }}</p></center> <br>
+      {% endif %}
+    {% endfor %}
+    <center>
+    <form action="{% url 'index' %}">
+      <br>
+      <br>
+      <button class="btn btn-dark" type="submit">Roll Dice Game</button>
+      <br>
+    </form>
+    </center>
+  </div>
+  </center>
+
+  <nav class="navbar navbar-dark fixed-bottom bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'imgs/IMG_0172.JPG' %}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+        Jayce's website
+      </a>
+    </div>
+  </nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+</html>

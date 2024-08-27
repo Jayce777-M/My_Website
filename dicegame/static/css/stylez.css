@@ -1,0 +1,28 @@
+
+.container{
+    background-position: center;
+    border: 10px;
+    border-radius: 50px;
+    margin: 20px 30px 30px 20px;
+    background-color: rgba(40, 47, 47, 0.686);
+    z-index: 1;
+}
+.h1{
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: x-large;
+}
+#wintab{
+ border: 10px;
+ border-radius: 65px;
+ width: 50vw;
+ 
+}
+#losetab{
+ border: 10px;
+ border-radius: 65px;
+ width: 50vw;
+ 
+}
+.body{
+    background-color: antiquewhite;
+}

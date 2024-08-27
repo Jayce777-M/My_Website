@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Index Page</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container-fluid" id="navibar">
+          <a class="navbar-brand" href="#">Jayce's Website</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Dice game</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'results' %}">Results</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Random generator</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-5 bg-body-secondary text-black text-center" id="gamename">
+      <h1>The Dice Game</h1>
+      <section><p>Guess if it will appear!</p></section>
+
+      <section><p>Select a number from the dropdown list. Then click "Roll the Dice" button. This button will roll the dice five times.<br>
+        If the number you selected from the dropdown list appears at least once, you win the game.<br>
+        Enjoy and Good luck!<br><br>
+      </p></section>
+
+     <center>
+      <div class="container" id="concontainer">
+        <form action="{% url 'results' %}">
+            <select class="form-select" name="userChoice" id="selectdice" required>
+                <option value="">Select a number</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <br>
+            <br>
+            <button class="btn btn-dark" type="submit">Roll the Dice</button>
+      </div>
+     </center>
+    </div>  
+    <nav class="navbar navbar-dark fixed-bottom bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'imgs/IMG_0172.JPG' %}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            Jayce's website
+          </a>
+        </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
