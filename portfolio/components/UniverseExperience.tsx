@@ -104,7 +104,7 @@ export default function UniverseExperience() {
         <div className="hero-actions">
           <a className="button" href="https://github.com/Jayce777-M" target="_blank" rel="noreferrer">GitHub <ArrowRight size={14} /></a>
           <a className="button" href="https://www.linkedin.com/in/jireh-asumah-954a6920a/" target="_blank" rel="noreferrer">LinkedIn <ArrowRight size={14} /></a>
-          <a className="button" href="mailto:hello@jireh.dev"><Mail size={14} /> Contact</a>
+          <a className="button" href="https://www.linkedin.com/in/jireh-asumah-954a6920a/" target="_blank" rel="noreferrer"><Mail size={14} /> Contact</a>
         </div>
       </section>
 
