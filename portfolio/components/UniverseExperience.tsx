@@ -65,6 +65,7 @@ export default function UniverseExperience() {
             <span><MapPin size={12} /> <b>SOFTWARE · AI</b></span>
             <span><Cpu size={12} /> <b>BUILDING WHAT'S NEXT</b></span>
           </div>
+          <div className="control-hint" style={{ marginTop: 18 }}>WASD / ARROWS TO MOVE · DRAG TO LOOK · CLICK A STRUCTURE TO ENTER</div>
         </motion.div>
         <div className="world-hud">
           <div className="hud-label">EXPLORER PROFILE</div>
