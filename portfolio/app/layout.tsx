@@ -5,7 +5,6 @@ export const metadata: Metadata = {
   title: "Jireh.EXE — Developer Universe",
   description:
     "Explore the engineering universe of Jireh: full-stack software, AI-powered applications, and technology built to solve real problems.",
-  metadataBase: new URL("https://jireh.dev"),
   openGraph: {
     title: "Jireh.EXE — Developer Universe",
     description: "A world of software, AI, and ideas built to make a difference.",
