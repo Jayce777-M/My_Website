@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Stars, Text, Sparkles } from "@react-three/drei";
+import { Float, Stars, Text, Sparkles, OrbitControls } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
@@ -75,8 +75,34 @@ function Building({ zone, onSelect }: { zone: Zone; onSelect: (id: string) => vo
 
 function Avatar() {
   const ref = useRef<THREE.Group>(null);
-  useFrame((state) => {
+  const keys = useRef<Record<string, boolean>>({});
+  useEffect(() => {
+    const down = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase();
+      if (["w", "a", "s", "d", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(key)) {
+        keys.current[key] = true;
+        event.preventDefault();
+      }
+    };
+    const up = (event: KeyboardEvent) => { keys.current[event.key.toLowerCase()] = false; };
+    const clear = () => { keys.current = {}; };
+    window.addEventListener("keydown", down);
+    window.addEventListener("keyup", up);
+    window.addEventListener("blur", clear);
+    return () => {
+      window.removeEventListener("keydown", down);
+      window.removeEventListener("keyup", up);
+      window.removeEventListener("blur", clear);
+    };
+  }, []);
+  useFrame((state, delta) => {
     if (!ref.current) return;
+    const speed = 2.8 * delta;
+    const x = Number(keys.current.d || keys.current.arrowright) - Number(keys.current.a || keys.current.arrowleft);
+    const z = Number(keys.current.s || keys.current.arrowdown) - Number(keys.current.w || keys.current.arrowup);
+    ref.current.position.x = THREE.MathUtils.clamp(ref.current.position.x + x * speed, -7.2, 7.2);
+    ref.current.position.z = THREE.MathUtils.clamp(ref.current.position.z + z * speed, -4.8, 5.4);
+    if (x || z) ref.current.rotation.y = Math.atan2(x, z);
     ref.current.position.y = 0.35 + Math.sin(state.clock.elapsedTime * 1.8) * 0.055;
   });
   return (
@@ -122,6 +148,7 @@ function WorldScene({ onSelect }: { onSelect: (id: string) => void }) {
       </Float>
       {zones.map((zone) => <Building key={zone.id} zone={zone} onSelect={onSelect} />)}
       <Avatar />
+      <OrbitControls target={[0, 1, -0.7]} enablePan={false} enableDamping dampingFactor={0.06} minDistance={8} maxDistance={17} maxPolarAngle={Math.PI / 2.05} />
       <mesh position={[0, -0.03, 2.15]} rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[0.62, 48]} />
         <meshBasicMaterial color="#65dfff" transparent opacity={0.09} />
