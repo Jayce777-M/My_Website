@@ -120,7 +120,7 @@ function Avatar() {
         <meshBasicMaterial color="#071a35" toneMapped={false} />
       </mesh>
       {[-0.19, 0.19].map((x) => <mesh key={x} position={[x, 0.08, 0]}><cylinderGeometry args={[0.085, 0.1, 0.42, 10]} /><meshBasicMaterial color="#a7f3ff" toneMapped={false} /></mesh>)}
-      {[-0.39, 0.39].map((x) => <mesh key={x} position={[x, 0.62, 0]} rotation={[0, 0, x > 0 ? -0.18 : 0.18]}><cylinderGeometry args={[0.075, 0.09, 0.5, 10]} /><meshBasicMaterial color="#a7f3ff" toneMapped={false} /></mesh>}
+      {[-0.39, 0.39].map((x) => <mesh key={x} position={[x, 0.62, 0]} rotation={[0, 0, x > 0 ? -0.18 : 0.18]}><cylinderGeometry args={[0.075, 0.09, 0.5, 10]} /><meshBasicMaterial color="#a7f3ff" toneMapped={false} /></mesh>)}
       <pointLight position={[0, 1.1, 0.3]} color="#38dfff" intensity={2.8} distance={4} />
       <mesh position={[0, 0.04, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[0.38, 0.48, 48]} />
