@@ -106,7 +106,7 @@ function Avatar() {
     ref.current.position.y = 0.35 + Math.sin(state.clock.elapsedTime * 1.8) * 0.055;
   });
   return (
-    <group ref={ref} position={[5.7, 0.35, 2.15]}>
+    <group ref={ref} position={[2.15, 0.35, 2.8]}>
       <mesh position={[0, 0.58, 0]} castShadow>
         <boxGeometry args={[0.58, 0.78, 0.38]} />
         <meshBasicMaterial color="#00cfff" toneMapped={false} />
@@ -154,8 +154,8 @@ function WorldScene({ onSelect }: { onSelect: (id: string) => void }) {
       </Float>
       {zones.map((zone) => <Building key={zone.id} zone={zone} onSelect={onSelect} />)}
       <Avatar />
-      <OrbitControls target={[1.2, 1, 0.2]} enablePan={false} enableDamping dampingFactor={0.06} minDistance={8} maxDistance={17} maxPolarAngle={Math.PI / 2.05} />
-      <mesh position={[5.7, -0.03, 2.15]} rotation={[-Math.PI / 2, 0, 0]}>
+      <OrbitControls target={[0, 1, 0.4]} enablePan={false} enableDamping dampingFactor={0.06} minDistance={8} maxDistance={17} maxPolarAngle={Math.PI / 2.05} />
+      <mesh position={[2.15, -0.03, 2.8]} rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[0.82, 48]} />
         <meshBasicMaterial color="#65dfff" transparent opacity={0.09} />
       </mesh>
@@ -169,7 +169,7 @@ export default function WorldCanvas({ onSelect }: { onSelect: (id: string) => vo
   if (!ready) return <div className="world-canvas" aria-hidden="true" />;
   return (
     <div className="world-canvas" aria-label="Interactive 3D developer universe. Select a glowing building to explore a section.">
-      <Canvas camera={{ position: [0, 5.2, 11.8], fov: 43 }} dpr={[1, 1.6]} gl={{ antialias: true, alpha: false }}>
+      <Canvas camera={{ position: [0, 5.2, 11.8], fov: 50 }} dpr={[1, 1.6]} gl={{ antialias: true, alpha: false }}>
         <Suspense fallback={null}>
           <WorldScene onSelect={onSelect} />
         </Suspense>
