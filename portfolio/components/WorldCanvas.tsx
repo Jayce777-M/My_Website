@@ -143,6 +143,11 @@ function WorldScene({ onSelect }: { onSelect: (id: string) => void }) {
       </Float>
       {zones.map((zone) => <Building key={zone.id} zone={zone} onSelect={onSelect} />)}
       <Avatar />
+      {/* Temporary direct-scene test: same visual object, bypassing the Avatar component. */}
+      <mesh position={[2.15, 1.1, 2.8]} renderOrder={1001}>
+        <boxGeometry args={[0.8, 1.5, 0.8]} />
+        <meshBasicMaterial color="#00ff62" toneMapped={false} depthTest={false} />
+      </mesh>
       {/* Temporary render diagnostic: this magenta sphere is independent of Avatar. */}
       <mesh position={[2.15, 1.35, 2.8]} renderOrder={999}>
         <sphereGeometry args={[0.42, 24, 24]} />
