@@ -76,6 +76,7 @@ function Building({ zone, onSelect }: { zone: Zone; onSelect: (id: string) => vo
 function Avatar() {
   const ref = useRef<THREE.Group>(null);
   const keys = useRef<Record<string, boolean>>({});
+
   useEffect(() => {
     const down = (event: KeyboardEvent) => {
       const key = event.key.toLowerCase();
@@ -95,6 +96,7 @@ function Avatar() {
       window.removeEventListener("blur", clear);
     };
   }, []);
+
   useFrame((state, delta) => {
     if (!ref.current) return;
     const speed = 2.8 * delta;
@@ -105,26 +107,13 @@ function Avatar() {
     if (x || z) ref.current.rotation.y = Math.atan2(x, z);
     ref.current.position.y = 0.35 + Math.sin(state.clock.elapsedTime * 1.8) * 0.055;
   });
+
+  // Diagnostic version: one uncomplicated mesh isolates component mounting and transforms.
   return (
     <group ref={ref} position={[2.15, 0.35, 2.8]}>
-      <mesh position={[0, 0.58, 0]} castShadow>
-        <boxGeometry args={[0.58, 0.78, 0.38]} />
-        <meshBasicMaterial color="#00cfff" toneMapped={false} />
-      </mesh>
-      <mesh position={[0, 1.12, 0]}>
-        <sphereGeometry args={[0.29, 24, 24]} />
-        <meshBasicMaterial color="#f2fdff" toneMapped={false} />
-      </mesh>
-      <mesh position={[0, 1.13, 0.255]}>
-        <boxGeometry args={[0.3, 0.09, 0.035]} />
-        <meshBasicMaterial color="#071a35" toneMapped={false} />
-      </mesh>
-      {[-0.19, 0.19].map((x) => <mesh key={x} position={[x, 0.08, 0]}><cylinderGeometry args={[0.085, 0.1, 0.42, 10]} /><meshBasicMaterial color="#a7f3ff" toneMapped={false} /></mesh>)}
-      {[-0.39, 0.39].map((x) => <mesh key={x} position={[x, 0.62, 0]} rotation={[0, 0, x > 0 ? -0.18 : 0.18]}><cylinderGeometry args={[0.075, 0.09, 0.5, 10]} /><meshBasicMaterial color="#a7f3ff" toneMapped={false} /></mesh>)}
-      <pointLight position={[0, 1.1, 0.3]} color="#38dfff" intensity={2.8} distance={4} />
-      <mesh position={[0, 0.04, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[0.38, 0.48, 48]} />
-        <meshBasicMaterial color="#54eaff" transparent opacity={0.9} side={THREE.DoubleSide} />
+      <mesh position={[0, 0.75, 0]} renderOrder={1000}>
+        <boxGeometry args={[0.8, 1.5, 0.8]} />
+        <meshBasicMaterial color="#00ff62" toneMapped={false} depthTest={false} />
       </mesh>
     </group>
   );
