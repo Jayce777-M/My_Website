@@ -113,7 +113,7 @@ function Avatar() {
     <group ref={ref} position={[2.15, 0.35, 2.8]}>
       <mesh position={[0, 0.75, 0]} renderOrder={1000}>
         <boxGeometry args={[0.8, 1.5, 0.8]} />
-        <meshBasicMaterial color="#00ff62" toneMapped={false} depthTest={false} />
+        <meshBasicMaterial color="#00d9ff" toneMapped={false} depthTest={false} />
       </mesh>
     </group>
   );
@@ -144,7 +144,7 @@ function WorldScene({ onSelect }: { onSelect: (id: string) => void }) {
       {zones.map((zone) => <Building key={zone.id} zone={zone} onSelect={onSelect} />)}
       <Avatar />
       {/* Temporary direct-scene test: same visual object, bypassing the Avatar component. */}
-      <mesh position={[2.15, 1.1, 2.8]} renderOrder={1001}>
+      <mesh position={[4.15, 1.1, 2.8]} renderOrder={1001}>
         <boxGeometry args={[0.8, 1.5, 0.8]} />
         <meshBasicMaterial color="#00ff62" toneMapped={false} depthTest={false} />
       </mesh>
