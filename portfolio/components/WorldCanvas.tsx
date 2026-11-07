@@ -154,6 +154,11 @@ function WorldScene({ onSelect }: { onSelect: (id: string) => void }) {
       </Float>
       {zones.map((zone) => <Building key={zone.id} zone={zone} onSelect={onSelect} />)}
       <Avatar />
+      {/* Temporary render diagnostic: this magenta sphere is independent of Avatar. */}
+      <mesh position={[2.15, 1.35, 2.8]} renderOrder={999}>
+        <sphereGeometry args={[0.42, 24, 24]} />
+        <meshBasicMaterial color="#ff00d4" toneMapped={false} depthTest={false} />
+      </mesh>
       <OrbitControls target={[0, 1, 0.4]} enablePan={false} enableDamping dampingFactor={0.06} minDistance={8} maxDistance={17} maxPolarAngle={Math.PI / 2.05} />
       <mesh position={[2.15, -0.03, 2.8]} rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[0.82, 48]} />
