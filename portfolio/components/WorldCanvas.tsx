@@ -106,19 +106,21 @@ function Avatar() {
     ref.current.position.y = 0.35 + Math.sin(state.clock.elapsedTime * 1.8) * 0.055;
   });
   return (
-    <group ref={ref} position={[2.65, 0.35, 2.15]}>
-      <mesh position={[0, 0.46, 0]} castShadow>
-        <capsuleGeometry args={[0.25, 0.58, 6, 12]} />
-        <meshStandardMaterial color="#17618a" metalness={0.35} roughness={0.28} emissive="#19bfff" emissiveIntensity={0.75} />
+    <group ref={ref} position={[5.7, 0.35, 2.15]}>
+      <mesh position={[0, 0.58, 0]} castShadow>
+        <boxGeometry args={[0.58, 0.78, 0.38]} />
+        <meshBasicMaterial color="#00cfff" toneMapped={false} />
       </mesh>
-      <mesh position={[0, 0.88, 0]}>
-        <sphereGeometry args={[0.22, 24, 24]} />
-        <meshStandardMaterial color="#e5fbff" metalness={0.15} roughness={0.25} emissive="#54dfff" emissiveIntensity={1.1} />
+      <mesh position={[0, 1.12, 0]}>
+        <sphereGeometry args={[0.29, 24, 24]} />
+        <meshBasicMaterial color="#f2fdff" toneMapped={false} />
       </mesh>
-      <mesh position={[0, 0.9, 0.145]}>
-        <boxGeometry args={[0.24, 0.065, 0.035]} />
-        <meshBasicMaterial color="#071a35" />
+      <mesh position={[0, 1.13, 0.255]}>
+        <boxGeometry args={[0.3, 0.09, 0.035]} />
+        <meshBasicMaterial color="#071a35" toneMapped={false} />
       </mesh>
+      {[-0.19, 0.19].map((x) => <mesh key={x} position={[x, 0.08, 0]}><cylinderGeometry args={[0.085, 0.1, 0.42, 10]} /><meshBasicMaterial color="#a7f3ff" toneMapped={false} /></mesh>)}
+      {[-0.39, 0.39].map((x) => <mesh key={x} position={[x, 0.62, 0]} rotation={[0, 0, x > 0 ? -0.18 : 0.18]}><cylinderGeometry args={[0.075, 0.09, 0.5, 10]} /><meshBasicMaterial color="#a7f3ff" toneMapped={false} /></mesh>}
       <pointLight position={[0, 1.1, 0.3]} color="#38dfff" intensity={2.8} distance={4} />
       <mesh position={[0, 0.04, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[0.38, 0.48, 48]} />
@@ -152,8 +154,8 @@ function WorldScene({ onSelect }: { onSelect: (id: string) => void }) {
       </Float>
       {zones.map((zone) => <Building key={zone.id} zone={zone} onSelect={onSelect} />)}
       <Avatar />
-      <OrbitControls target={[0, 1, -0.7]} enablePan={false} enableDamping dampingFactor={0.06} minDistance={8} maxDistance={17} maxPolarAngle={Math.PI / 2.05} />
-      <mesh position={[2.65, -0.03, 2.15]} rotation={[-Math.PI / 2, 0, 0]}>
+      <OrbitControls target={[1.2, 1, 0.2]} enablePan={false} enableDamping dampingFactor={0.06} minDistance={8} maxDistance={17} maxPolarAngle={Math.PI / 2.05} />
+      <mesh position={[5.7, -0.03, 2.15]} rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[0.82, 48]} />
         <meshBasicMaterial color="#65dfff" transparent opacity={0.09} />
       </mesh>
