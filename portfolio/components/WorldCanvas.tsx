@@ -106,20 +106,24 @@ function Avatar() {
     ref.current.position.y = 0.35 + Math.sin(state.clock.elapsedTime * 1.8) * 0.055;
   });
   return (
-    <group ref={ref} position={[0, 0.35, 2.15]}>
+    <group ref={ref} position={[2.65, 0.35, 2.15]}>
       <mesh position={[0, 0.46, 0]} castShadow>
-        <capsuleGeometry args={[0.19, 0.45, 5, 10]} />
-        <meshStandardMaterial color="#182c4d" metalness={0.45} roughness={0.32} emissive="#245e9c" emissiveIntensity={0.25} />
+        <capsuleGeometry args={[0.25, 0.58, 6, 12]} />
+        <meshStandardMaterial color="#17618a" metalness={0.35} roughness={0.28} emissive="#19bfff" emissiveIntensity={0.75} />
       </mesh>
       <mesh position={[0, 0.88, 0]}>
-        <sphereGeometry args={[0.16, 20, 20]} />
-        <meshStandardMaterial color="#b7d8ff" metalness={0.2} roughness={0.4} emissive="#5fcfff" emissiveIntensity={0.3} />
+        <sphereGeometry args={[0.22, 24, 24]} />
+        <meshStandardMaterial color="#e5fbff" metalness={0.15} roughness={0.25} emissive="#54dfff" emissiveIntensity={1.1} />
       </mesh>
       <mesh position={[0, 0.9, 0.145]}>
-        <boxGeometry args={[0.19, 0.045, 0.025]} />
-        <meshBasicMaterial color="#70e9ff" />
+        <boxGeometry args={[0.24, 0.065, 0.035]} />
+        <meshBasicMaterial color="#071a35" />
       </mesh>
-      <pointLight position={[0, 1.1, 0.3]} color="#64dfff" intensity={1.2} distance={2.5} />
+      <pointLight position={[0, 1.1, 0.3]} color="#38dfff" intensity={2.8} distance={4} />
+      <mesh position={[0, 0.04, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.38, 0.48, 48]} />
+        <meshBasicMaterial color="#54eaff" transparent opacity={0.9} side={THREE.DoubleSide} />
+      </mesh>
     </group>
   );
 }
@@ -149,8 +153,8 @@ function WorldScene({ onSelect }: { onSelect: (id: string) => void }) {
       {zones.map((zone) => <Building key={zone.id} zone={zone} onSelect={onSelect} />)}
       <Avatar />
       <OrbitControls target={[0, 1, -0.7]} enablePan={false} enableDamping dampingFactor={0.06} minDistance={8} maxDistance={17} maxPolarAngle={Math.PI / 2.05} />
-      <mesh position={[0, -0.03, 2.15]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[0.62, 48]} />
+      <mesh position={[2.65, -0.03, 2.15]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[0.82, 48]} />
         <meshBasicMaterial color="#65dfff" transparent opacity={0.09} />
       </mesh>
     </>
