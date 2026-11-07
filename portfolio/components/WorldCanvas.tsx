@@ -110,7 +110,7 @@ function Avatar() {
 
   // Diagnostic version: one uncomplicated mesh isolates component mounting and transforms.
   return (
-    <group ref={ref} position={[0.8, 0.35, 2.8]}>
+    <group ref={ref} position={[0.8, 0.35, 4.6]}>
       <mesh position={[0, 0.75, 0]} renderOrder={1000}>
         <boxGeometry args={[0.8, 1.5, 0.8]} />
         <meshBasicMaterial color="#00d9ff" toneMapped={false} depthTest={false} />
@@ -154,7 +154,7 @@ function WorldScene({ onSelect }: { onSelect: (id: string) => void }) {
         <meshBasicMaterial color="#ff00d4" toneMapped={false} depthTest={false} />
       </mesh>
       <OrbitControls target={[0, 1, 0.4]} enablePan={false} enableDamping dampingFactor={0.06} minDistance={8} maxDistance={17} maxPolarAngle={Math.PI / 2.05} />
-      <mesh position={[0.8, -0.03, 2.8]} rotation={[-Math.PI / 2, 0, 0]}>
+      <mesh position={[0.8, -0.03, 4.6]} rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[0.82, 48]} />
         <meshBasicMaterial color="#65dfff" transparent opacity={0.09} />
       </mesh>
